@@ -1,4 +1,5 @@
-![image](https://user-images.githubusercontent.com/61791877/167627700-f4e58ec5-88e3-4949-9016-84f1717e548a.png)
+![image](https://user-images.githubusercontent.com/61791877/167641351-a92111d3-00ed-41bf-a461-ba49b4015a25.png)
+
 
 
 # Teste técnico - CI&T
