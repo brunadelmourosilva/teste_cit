@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 public class PizzaRequestDTO {
 
     @NotNull(message = "The field NAME cannot be null")
-    @Length(min = 3, max = 100, message = "The field NAME needs to be between 3 and 100 characters")
+    @Length(min = 10, max = 100, message = "The field NAME needs to be between 10 and 100 characters")
     private String name;
 
     @NotNull(message = "The field DESCRIPTION cannot be null")
