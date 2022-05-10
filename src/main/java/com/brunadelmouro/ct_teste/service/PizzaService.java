@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 
 @Service
@@ -17,7 +18,8 @@ public class PizzaService {
 
 
     public Pizza savePizza(Pizza pizza) {
-        //validação
+        validatePizzaDoesNotExistByName(pizza.getName());
+
         return pizzaRepository.save(pizza);
     }
 
@@ -33,7 +35,24 @@ public class PizzaService {
     }
 
     public void deletePizza(Pizza pizza) {
-        //validação
+        validatePizzaExists(pizza);
+
         this.pizzaRepository.delete(pizza);
+    }
+
+    public void validatePizzaDoesNotExistByName(String name){
+        pizzaRepository.findAll().forEach(
+                x -> {
+                    String comparison = x.getName().toUpperCase();
+                    if(name.toUpperCase().equals(comparison))
+                        throw new IllegalArgumentException("Pizza already exists.");
+                });
+    }
+
+    public Pizza validatePizzaExists(Pizza pizza){
+        if (pizza == null || pizza.getId() == null) {
+            throw new IllegalArgumentException("Pizza id cannot be null.");
+        }
+        return pizza;
     }
 }
