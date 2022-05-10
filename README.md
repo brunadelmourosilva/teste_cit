@@ -16,6 +16,7 @@
 * Java 11
 * Spring Boot 2.6.7
 * Spring Data JPA
+* Docker
 * Maven
 * MySQL
 * H2 Database
@@ -68,4 +69,9 @@ _terminar_
 --- 
 
 ### Diferenciais implementados no projeto
+
+* swagger
+* banco de dados com docker
+* junit
+* endpoint paginado
 _terminar_
