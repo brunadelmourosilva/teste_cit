@@ -40,8 +40,10 @@ docker-compose up -d
 
 ---
 
-### Banco de dados com Docker
+### Acesso à tabela do banco de dados
 
+Como o ambiente da aplicação sobe via docker-compose, o MySQL é um contêiner, e para acessar a tabela `pizza`, deve-se executar, na raiz do projeto, os seguintes comandos:
+_terminar_
 ---
 
 ### Features
@@ -61,3 +63,8 @@ docker-compose up -d
 ![img_6.png](img_6.png)
 
 ![img_3.png](img_3.png)
+
+--- 
+
+### Diferenciais implementados no projeto
+_terminar_
