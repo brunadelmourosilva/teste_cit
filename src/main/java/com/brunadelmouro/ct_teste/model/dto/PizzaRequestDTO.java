@@ -13,7 +13,7 @@ public class PizzaRequestDTO {
     private String name;
 
     @NotNull(message = "The field DESCRIPTION cannot be null")
-    @Length(min = 10, max = 150, message = "The field NAME needs to be between 10 and 150 characters")
+    @Length(min = 3, max = 150, message = "The field DESCRIPTION needs to be between 3 and 150 characters")
     private String description;
 
     @NotNull(message = "The field PRICE cannot be null")

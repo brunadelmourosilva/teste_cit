@@ -48,12 +48,16 @@ docker-compose up -d
 
 * **Exceções personalizadas**: O código foi programado para lançar exceções descritivas, que auxiliam o programador a encontrar a origem do problema.
 
-_exemplo de casos alternativos_
+![img.png](img.png)
+
+![img_2.png](img_2.png)
 
 * **Lista de exceções referentes à validação**: Ao tentar realizar a entrada de dados incompletos/incorretos, o sistema retorna uma lista de exceções personalizadas.
 
-_exemplo_
+![img_5.png](img_5.png)
 
 * **Testes unitários**: Com o objetivo de manter a integridade das funções, realizei alguns testes nas seguintes camadas: **repository** e **servcice**
 
-_exemplo_
+![img_6.png](img_6.png)
+
+![img_3.png](img_3.png)
