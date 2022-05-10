@@ -2,6 +2,8 @@ package com.brunadelmouro.ct_teste.service;
 
 import com.brunadelmouro.ct_teste.exceptions.ObjectNotFoundException;
 import com.brunadelmouro.ct_teste.model.Pizza;
+import com.brunadelmouro.ct_teste.model.dto.PizzaRequestDTO;
+import com.brunadelmouro.ct_teste.model.dto.PizzaResponseDTO;
 import com.brunadelmouro.ct_teste.repository.PizzaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -53,5 +55,21 @@ public class PizzaService {
             throw new IllegalArgumentException("Pizza id cannot be null.");
         }
         return pizza;
+    }
+
+    public Pizza convertDtoToEntity(PizzaRequestDTO pizzaRequestDTO) {
+        return new Pizza(
+                null,
+                pizzaRequestDTO.getName(),
+                pizzaRequestDTO.getDescription(),
+                pizzaRequestDTO.getPrice());
+    }
+
+    public PizzaResponseDTO convertEntityToResponseDto(Pizza pizzaEntity) {
+        return new PizzaResponseDTO(
+                pizzaEntity.getName(),
+                pizzaEntity.getDescription(),
+                pizzaEntity.getPrice()
+        );
     }
 }
