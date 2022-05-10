@@ -26,7 +26,7 @@ public class PizzaRepositoryTest {
     PizzaRepository pizzaRepository;
 
     @Test
-    @DisplayName("Should save a pizza with success")
+    @DisplayName("Should save a Pizza with success")
     public void savePizzaTest() {
         Pizza pizza = createNewPizza();
 
@@ -36,7 +36,7 @@ public class PizzaRepositoryTest {
     }
 
     @Test
-    @DisplayName("Should return a pizza by id with success")
+    @DisplayName("Should return a Pizza by id with success")
     public void findPizzaByIdTest() {
         Pizza pizza = createNewPizza();
 
@@ -49,7 +49,7 @@ public class PizzaRepositoryTest {
     }
 
     @Test
-    @DisplayName("Should delete a pizza with success")
+    @DisplayName("Should delete a Pizza with success")
     public void deletePizza() {
         Pizza pizza = createNewPizza();
 
@@ -62,7 +62,6 @@ public class PizzaRepositoryTest {
         Pizza deletedPizza = testEntityManager.find(Pizza.class, pizza.getId());
         System.out.println(deletedPizza); //null
 
-        //assert - id null
         assertThat(deletedPizza).isNull();
     }
 
