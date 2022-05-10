@@ -1,13 +1,12 @@
 package com.brunadelmouro.ct_teste.service;
 
+import com.brunadelmouro.ct_teste.exceptions.ObjectNotFoundException;
 import com.brunadelmouro.ct_teste.model.Pizza;
 import com.brunadelmouro.ct_teste.repository.PizzaRepository;
-import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Locale;
 import java.util.Optional;
 
 @Service
@@ -26,7 +25,7 @@ public class PizzaService {
     public Pizza findPizzaById(Integer id) {
         Optional<Pizza> obj = pizzaRepository.findById(id);
 
-        return obj.orElseThrow(() -> new ObjectNotFoundException(1, "Pizza not found."));
+        return obj.orElseThrow(() -> new ObjectNotFoundException("Pizza not found."));
     }
 
     //aplicar Pageable
