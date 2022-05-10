@@ -5,11 +5,15 @@ import com.brunadelmouro.ct_teste.model.dto.PizzaRequestDTO;
 import com.brunadelmouro.ct_teste.model.dto.PizzaResponseDTO;
 import com.brunadelmouro.ct_teste.service.PizzaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/pizzas")
@@ -33,13 +37,17 @@ public class PizzaController {
         return ResponseEntity.ok().body(pizzaService.convertEntityToResponseDto(pizza));
     }
 
-    //implementar busca paginada
-//    @GetMapping
-//    public ResponseEntity<List<PizzaResponseDTO>> findPizzas(){
-//        List<Pizza> pizzas = pizzaService.findPizzas();
-//
-//        return ResponseEntity.ok().body(pizzaService.convertEntityToResponseDto(pizzas));
-//    }
+    @GetMapping
+    public Page<PizzaResponseDTO> findPizzasByPage(Pizza pizza, Pageable pageRequest){
+        Page<Pizza> result = pizzaService.findPizzaPage(pizza, pageRequest);
+
+        List<PizzaResponseDTO> list = result.getContent()
+                .stream()
+                .map(entity -> pizzaService.convertEntityToResponseDto(entity))
+                .collect(Collectors.toList());
+
+        return new PageImpl<>(list, pageRequest, result.getTotalElements());
+    }
 
     @DeleteMapping("/deletePizza/{id}")
     public void deletePizzaById(@PathVariable Integer id) {

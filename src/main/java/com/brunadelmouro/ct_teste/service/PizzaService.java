@@ -6,6 +6,10 @@ import com.brunadelmouro.ct_teste.model.dto.PizzaRequestDTO;
 import com.brunadelmouro.ct_teste.model.dto.PizzaResponseDTO;
 import com.brunadelmouro.ct_teste.repository.PizzaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,9 +34,15 @@ public class PizzaService {
         return obj.orElseThrow(() -> new ObjectNotFoundException("Pizza not found."));
     }
 
-    //aplicar Pageable
-    public List<Pizza> findPizzas() {
-        return pizzaRepository.findAll();
+    public Page<Pizza> findPizzaPage(Pizza filter, Pageable pageRequest) {
+        Example<Pizza> example = Example.of(filter,
+                ExampleMatcher
+                        .matching()
+                        .withIgnoreCase()
+                        .withIgnoreNullValues()
+                        .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING));
+
+        return pizzaRepository.findAll(example, pageRequest);
     }
 
     public void deletePizza(Pizza pizza) {
@@ -46,7 +56,7 @@ public class PizzaService {
                 x -> {
                     String comparison = x.getName().toUpperCase();
                     if(name.toUpperCase().equals(comparison))
-                        throw new IllegalArgumentException("Pizza already exists.");
+                        throw new IllegalArgumentException("Pizza " + name + " is already registered.");
                 });
     }
 
