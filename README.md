@@ -45,7 +45,17 @@ docker-compose up -d
 ### Acesso à tabela do banco de dados
 
 Como o ambiente da aplicação sobe via docker-compose, o MySQL é um contêiner, e para acessar a tabela `pizza`, deve-se executar, na raiz do projeto, os seguintes comandos:
-_terminar_
+
+**IMPORTANTE**: Caso esteja utilizando o Git Bash, substitua o primeiro comando por `winpty docker exec -it mysql mysql -uroot -proot`
+
+```
+docker exec -it mysql mysql -uroot -proot
+use db_testect;
+select * from pizza;
+```
+
+![img_7.png](img_7.png)
+
 ---
 
 ### Features
@@ -60,18 +70,24 @@ _terminar_
 
 ![img_5.png](img_5.png)
 
-* **Testes unitários**: Com o objetivo de manter a integridade das funções, realizei alguns testes nas seguintes camadas: **repository** e **servcice**
 
-![img_6.png](img_6.png)
 
-![img_3.png](img_3.png)
 
 --- 
 
 ### Diferenciais implementados no projeto
 
-* swagger
-* banco de dados com docker
-* junit
-* endpoint paginado
-_terminar_
+✔️ Documentação da API com Swagger
+
+✔️ Acesso ao banco de dados via docker-compose
+
+✔️ Testes unitários com JUnit: Com o objetivo de manter a integridade das funções, realizei alguns testes nas seguintes camadas: **repository** e **servcice**
+
+![img_6.png](img_6.png)
+
+![img_3.png](img_3.png)
+
+✔️ Paginação de endpoint para a listagem das pizzas cadastradas
+
+![img_4.png](img_4.png)
+
