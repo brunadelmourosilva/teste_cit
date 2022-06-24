@@ -12,7 +12,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -29,9 +28,9 @@ public class PizzaService {
     }
 
     public Pizza findPizzaById(Integer id) {
-        Optional<Pizza> obj = pizzaRepository.findById(id);
+        Optional<Pizza> pizza = pizzaRepository.findById(id);
 
-        return obj.orElseThrow(() -> new ObjectNotFoundException("Pizza not found."));
+        return pizza.orElseThrow(() -> new ObjectNotFoundException("Pizza not found."));
     }
 
     public Page<Pizza> findPizzaPage(Pizza filter, Pageable pageRequest) {
